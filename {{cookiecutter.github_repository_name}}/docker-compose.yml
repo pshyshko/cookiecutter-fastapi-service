@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  testdb_postgres:
+    image: postgres:16
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secret
+      POSTGRES_HOST: postgres_db
+      POSTGRES_DB: test_data
+      POSTGRES_PORT: 5432
+    container_name: testdb_postgres
+    volumes:
+      - /tmp:/tmp
+
+
+networks:
+  bridge-net:
+    driver: bridge
